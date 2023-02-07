@@ -90,7 +90,6 @@ class Solution {
     private String inFile = "";
     private String inFileData = "";
     private String outFile = "";
-
     private String output;
 
     public void run(String[] args) throws IOException {
@@ -152,7 +151,7 @@ class Solution {
         try {
             solution.run(args);
         } catch (Exception e) {
-            System.out.println("Error: " + e.toString());
+            System.out.println("Error: " + e);
         }
     }
 }
