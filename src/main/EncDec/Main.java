@@ -1,4 +1,4 @@
-package main;
+package main.EncDec;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -73,14 +73,11 @@ class EncoderFactory {
     public IEncoder create(String alg) {
         alg = alg.toUpperCase();
 
-        switch (alg) {
-            case "SHIFT":
-                return new ShiftCipher();
-            case "UNICODE":
-                return new UnicodeCipher();
-            default:
-                throw new IllegalStateException("Unexpected value: " + alg);
-        }
+        return switch (alg) {
+            case "SHIFT" -> new ShiftCipher();
+            case "UNICODE" -> new UnicodeCipher();
+            default -> throw new IllegalStateException("Unexpected value: " + alg);
+        };
     }
 }
 
@@ -105,23 +102,12 @@ class Solution {
     private void argumentsParse(String[] args) {
         for (int i = 0; i < args.length; i++) {
             switch (args[i]) {
-                case "-mode":
-                    encode = args[i + 1];
-                    break;
-                case "-data":
-                    data = args[i + 1];
-                    break;
-                case "-alg":
-                    algorithm = args[i + 1];
-                    break;
-                case "-key":
-                    key = Integer.parseInt(args[i + 1]);
-                    break;
-                case "-in":
-                    inFile = args[i + 1];
-                    break;
-                case "-out":
-                    outFile = args[i + 1];
+                case "-mode" -> encode = args[i + 1];
+                case "-data" -> data = args[i + 1];
+                case "-alg" -> algorithm = args[i + 1];
+                case "-key" -> key = Integer.parseInt(args[i + 1]);
+                case "-in" -> inFile = args[i + 1];
+                case "-out" -> outFile = args[i + 1];
             }
         }
     }
