@@ -92,7 +92,7 @@ class Solution {
     private String outFile = "";
     private String output;
 
-    public void run(String[] args) throws IOException {
+    public void run(String[] args) {
         argumentsParse(args);
         inputInFile();
         encodeAndOutput();
@@ -137,7 +137,7 @@ class Solution {
         if (outFile.isBlank()) {
             System.out.println(output);
         } else {
-            try (FileWriter fileWriter = new FileWriter(new File(outFile))) {
+            try (FileWriter fileWriter = new FileWriter(outFile)) {
                 fileWriter.write(output);
                 fileWriter.flush();
             } catch (IOException e) {
